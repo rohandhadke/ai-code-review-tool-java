@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -37,13 +38,32 @@ public class CodeReviewController {
         try {
             CodeReviewResponse response = geminiService.reviewCode(
                     request.getCode(),
-                    request.getLanguage()
-            );
+                    request.getLanguage());
             log.info("Code review completed successfully");
             return ResponseEntity.ok(response);
         } catch (RuntimeException e) {
             log.error("Code review failed: {}", e.getMessage());
             return ResponseEntity.internalServerError().body(Map.of("error", e.getMessage()));
         }
+    }
+
+    @GetMapping("/health")
+    public ResponseEntity<?> healthCheck() {
+        return ResponseEntity.ok(
+                Map.of(
+                        "status", "UP",
+                        "service", "AI Code Review Service",
+                        "version", "1.0"));
+    }
+
+    @GetMapping("/test")
+    public ResponseEntity<?> testApi() {
+        log.info("Test API called");
+
+        return ResponseEntity.ok(
+                Map.of(
+                        "status", "SUCCESS",
+                        "message", "API is working fine 🚀",
+                        "timestamp", System.currentTimeMillis()));
     }
 }

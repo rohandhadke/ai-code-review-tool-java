@@ -66,7 +66,7 @@ function App() {
       </main>
 
       <footer className="text-center text-muted py-3 mt-4 border-top">
-        <small>Powered by Google Gemini AI</small>
+        <small>Made by Rohan☺</small>
       </footer>
     </div>
   )
