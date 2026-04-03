@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "Bash(npm create:*)",
-      "Bash(./mvnw.cmd compile:*)"
+      "Bash(./mvnw.cmd compile:*)",
+      "Bash(npm install:*)",
+      "Bash(npx vite:*)"
     ]
   }
 }

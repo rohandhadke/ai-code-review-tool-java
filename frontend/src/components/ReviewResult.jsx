@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { downloadAsMarkdown, downloadAsPdf } from '../utils/downloadUtils'
 
 function CopyButton({ text }) {
   const [copied, setCopied] = useState(false)
@@ -33,6 +34,22 @@ function CopyButton({ text }) {
 function ReviewResult({ data }) {
   return (
     <div className="review-results mt-4">
+      {/* Download Buttons */}
+      <div className="d-flex justify-content-end mb-3 gap-2">
+        <button
+          className="btn btn-outline-secondary btn-sm"
+          onClick={() => downloadAsMarkdown(data)}
+        >
+          &#8615; Markdown
+        </button>
+        <button
+          className="btn btn-outline-secondary btn-sm"
+          onClick={() => downloadAsPdf(data)}
+        >
+          &#8615; PDF
+        </button>
+      </div>
+
       {/* Issues & Bugs */}
       <div className="card result-card mb-4">
         <div className="card-header bg-danger text-white d-flex align-items-center">

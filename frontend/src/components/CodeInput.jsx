@@ -53,7 +53,10 @@ function CodeInput({ onSubmit, loading }) {
           onKeyDown={handleKeyDown}
           spellCheck="false"
         />
-        <div className="form-text">Press Ctrl + Enter to submit</div>
+        <div className="form-text d-flex justify-content-between">
+          <span>Press Ctrl + Enter to submit</span>
+          <span>{code.length} characters | {code ? code.split('\n').length : 0} lines</span>
+        </div>
       </div>
 
       <button
